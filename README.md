@@ -1,17 +1,43 @@
 # Собрал Django REST framework & vue в одном проекте.Выводятся посты с картинками и информацией.
 '''
 -Создал директорию
+	$ mkdir _name_name_
+	$ ls
+	
 -создал и активировал виртуалку
--в settings зарегал приложение и rest...., дописал MEDIA
+	$ python3 -m venv venv
+	$ source venv/bin/activate
+	
+-установил необходимые пакеты (+обновил систему)
+	sudo apt update  = обновит все пакеты
+	sudo apt upgrade -y = будет устаналивать их (-y значит я согласен)
+	sudo apt autoremove = очистка от ненужных и временных файлов, делать периодически.
+	sudo apt autoclean = подчистка за autoremove
+
+	$ pip install -U pip 
+	$ pip install -U setuptools django pillow djangorestframework
+	
+-в settings зарегал приложение и rest_framework, дописал MEDIA
 -написал модели
 -сделал миграции
+	$ ./manage.py makemigrations
+	$ ./manage.py migrate
+	
 -создал суперпользователя
--зарегал модели в админке
+	$ ./manage.py createsuperuser
+	
+-тестово запускаю сервер
+	$ ./manage.py runserver
+	проверяю работу в браузере
+	
+-зарегал модели в админке (они появятся на странице в панели админа на сайте)
 -в api: написал serializers, views
--заполнил главный urls, и urls приложения
+-заполнил главный urls
+-создал и заполнил urls приложения в api
 -в админке создал посты
--проверил, как выводятся в json
--- создал frontend
+-тестово проверил, как выводятся в json
+
+---- создаю frontend
 vue create .
 
 Настраиваем:

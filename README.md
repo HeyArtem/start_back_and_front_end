@@ -38,8 +38,11 @@
 -тестово проверил, как выводятся в json
 
 ---- создаю frontend
-vue create .
-
+-во втором терминале
+	$ mkdir frontend
+	$ cd frontend/
+	$ vue create .
+	
 Настраиваем:
 ? Generate project in current directory? (Y/n)  Y
 
@@ -66,9 +69,10 @@ vue create .
 								? Save this as a preset for future projects? 								 (y/N) N
 (ждем окончания установки)
 
-запускаю сервер
-npm run serve
-в components создаем (или переименовываем фаил) BlogPostList.vue
+-запускаю сервер
+	$ npm run serve
+	
+-в components создаем (или переименовываем фаил) BlogPostList.vue
 чистим его, остается
 <template>
 	<div class="post-list">
@@ -104,7 +108,7 @@ a {
 </style>
 
 
-настраиваем Home.vue
+-настраиваем Home.vue
 <template>
 	<div class="home">
 		<img alt="Vue logo" src="../assets/logo.png">
@@ -134,11 +138,11 @@ export default {
 }
 </script>
 
-останавливаем сервак, устанавливаем библиотеку axios (аналог requests, отправляем через нее запросы. Находимся в дир-рии frontend)
+-останавливаем сервак, устанавливаем библиотеку axios (аналог requests, отправляем через нее запросы. Находимся в дир-рии frontend)
 CTRL + C
-npm install axios -s   #nout package manager
+	$ npm install axios -s   #nout package manager
 
-Запускаем сервак, проверяем, что бы станица выводилась
+-Запускаем сервак, проверяем, что бы станица выводилась
 
 пишем в Home
 <template>
@@ -179,47 +183,47 @@ export default {
 
 
 
-устанавливаем django-cors-headers 3.10.1 (в терминале backend !!!)
-(https://pypi.org/project/django-cors-headers/)
+-устанавливаем django-cors-headers 3.10.1 (в терминале backend !!!)
+	(https://pypi.org/project/django-cors-headers/)
 	открываем терминал backend, тормозим его, устанавливаем библиотеку
-pip install django-cors-headers
+	$pip install django-cors-headers
 
-дописываем в 
-INSTALLED_APPS = [
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
-	'blog_app',
-	'rest_framework',
-	"corsheaders"
-]
+-дописываем в 
+	INSTALLED_APPS = [
+		'django.contrib.admin',
+		'django.contrib.auth',
+		'django.contrib.contenttypes',
+		'django.contrib.sessions',
+		'django.contrib.messages',
+		'django.contrib.staticfiles',
+		'blog_app',
+		'rest_framework',
+		"corsheaders"
+	]
 
-MIDDLEWARE = [
-	'django.middleware.security.SecurityMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	"corsheaders.middleware.CorsMiddleware",
-	"django.middleware.common.CommonMiddleware",
-]
-
-
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ALLOWED_ORIGINS = [
-	'http://127.0.0.1:8080', #это backend
-	'http://localhost:8080'  #это frontend
-]
+	MIDDLEWARE = [
+		'django.middleware.security.SecurityMiddleware',
+		'django.contrib.sessions.middleware.SessionMiddleware',
+		'django.middleware.common.CommonMiddleware',
+		'django.middleware.csrf.CsrfViewMiddleware',
+		'django.contrib.auth.middleware.AuthenticationMiddleware',
+		'django.contrib.messages.middleware.MessageMiddleware',
+		'django.middleware.clickjacking.XFrameOptionsMiddleware',
+		"corsheaders.middleware.CorsMiddleware",
+		"django.middleware.common.CommonMiddleware",
+	]
 
 
-в Home обозначаю ВебХук (промежуточные элементы, которые срабатывают в первую очередь)
+
+	DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+	CORS_ALLOWED_ORIGINS = [
+		'http://127.0.0.1:8080', #это backend
+		'http://localhost:8080'  #это frontend
+	]
+
+
+-в Home обозначаю ВебХук (промежуточные элементы, которые срабатывают в первую очередь)
 <template>
 	<div class="home">
 		<BlogPostList :posts='posts'/>
@@ -259,14 +263,13 @@ export default {
 
 
 
-запускаю сервер backend
- ./manage.py runserver
+-запускаю сервер backend
+ 	$ ./manage.py runserver
+	проверяю, что выводятся посты в консоль
 
-проверяю, что выводятся посты в консоль
 
-
-в Home заполняю модель посты, кладу в нее данные
-this.posts = response.data это мы обращаемся к  posts: [], кладем в нее данные из запроса	 и дальше передаем в компоненту <BlogPostList :posts='posts'/>
+-в Home заполняю модель посты, кладу в нее данные
+	this.posts = response.data это мы обращаемся к  posts: [], кладем в нее данные из запроса	 и дальше передаем в компоненту <BlogPostList :posts='posts'/>
 			
 <template>
 	<div class="home">
@@ -307,8 +310,9 @@ methods: {
 </script>
 
 
-в BlogPostList.vue
-в BlogPostList.vue мы уже принимаем некий posts: Array м рсиаеися его разложить
+-в BlogPostList.vue
+	в BlogPostList.vue мы уже принимаем некий posts: Array и я его потрошу его разложить
+	
 <template>
 	<div class="post-list">
 		<h1>Good afternoon</h1>
